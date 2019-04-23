@@ -29,10 +29,6 @@ app.use('/api/admin', admin);
 app.use('/api/auth', auth);
 app.use('/api/blog', blog);
 
-app.get('/', (req, res) => {
-  res.render('index');
-});
-
 //Server Static assets if is production
 if (process.env.NODE_ENV === 'production') {
   //Set Static Folder
