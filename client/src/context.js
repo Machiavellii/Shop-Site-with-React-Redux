@@ -55,15 +55,15 @@ export class Provider extends Component {
     });
   }
 
-  // async componentDidUpdate() {
-  //   const res = await axios.get('/api/products');
+  async componentDidUpdate() {
+    const res = await axios.get('/api/products');
 
-  //   this.setState({ products: res.data });
+    this.setState({ products: res.data });
 
-  //   const blog = await axios.get('/api/blog');
+    const blog = await axios.get('/api/blog');
 
-  //   this.setState({ blogs: blog.data });
-  // }
+    this.setState({ blogs: blog.data });
+  }
 
   render() {
     return (
