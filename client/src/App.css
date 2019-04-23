@@ -25,6 +25,13 @@ a:hover {
 }
 
 /* MEDIA QUERIES AND HELPER CLASSES */
+@media (max-width: 470px) {
+  .female span,
+  .male span {
+    font-size: 0.9rem;
+  }
+}
+
 @media (max-width: 768px) {
   .navbar {
     padding: 1rem 1rem;

@@ -183,7 +183,7 @@ class ProductPage extends Component {
 
                   <TextInputGroup
                     name="gender"
-                    placeholder={'* Describe prodduct'}
+                    placeholder={'* T-shirt, Jacket, Shirt....'}
                     value={gender}
                     onChange={this.onChange}
                     error={errors.gender}

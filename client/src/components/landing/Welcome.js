@@ -7,7 +7,7 @@ class Welcome extends Component {
   render() {
     return (
       <div className="welcome">
-        <div className="message">
+        <div className="col-sm-6 message">
           <h1 className="display-4 mb-4 text-white">
             Welcome to our <span>shop</span>{' '}
           </h1>
