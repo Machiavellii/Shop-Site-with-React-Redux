@@ -1,0 +1,12 @@
+.row {
+  align-items: center;
+}
+.first-span {
+  display: inline-block;
+  width: 4.5rem;
+}
+
+.btn-success {
+  background-color: #548e61;
+  border-color: unset;
+}

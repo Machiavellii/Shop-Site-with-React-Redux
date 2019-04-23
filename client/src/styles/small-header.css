@@ -1,0 +1,16 @@
+.small-header {
+  padding: 0.5rem;
+  background: #f3f2f2;
+}
+.small-header > .container {
+  display: flex;
+  justify-content: space-between;
+}
+.small-header a {
+  color: #333;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+.small-header a:hover {
+  color: #000;
+}

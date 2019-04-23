@@ -1,0 +1,77 @@
+.heading {
+  text-align: center;
+}
+.heading h1 {
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+.heading .lead {
+  font-size: 1rem;
+  color: #999;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.female,
+.male {
+  opacity: 0.8;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.female span,
+.male span {
+  position: absolute;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  font-size: 1.4rem;
+}
+
+.female a:after,
+.male a:after {
+  content: '';
+  display: block;
+  position: absolute;
+  border: 2px solid #fff;
+  width: 20%;
+  height: 20%;
+  top: 5%;
+  left: 3%;
+  border-right: unset;
+  border-bottom: unset;
+  transition: all 0.4s;
+}
+
+.female a:before,
+.male a:before {
+  content: '';
+  display: block;
+  position: absolute;
+  border: 2px solid #fff;
+  width: 20%;
+  height: 20%;
+  bottom: 5%;
+  right: 3%;
+  border-left: unset;
+  border-top: unset;
+  transition: all 0.4s;
+}
+
+.female a:hover:after,
+.male a:hover:after {
+  top: 10%;
+  left: 7%;
+  width: 25%;
+  height: 35%;
+  transition: all 0.4s;
+}
+
+.female a:hover:before,
+.male a:hover:before {
+  bottom: 10%;
+  right: 7%;
+  width: 25%;
+  height: 35%;
+  transition: all 0.4s;
+}

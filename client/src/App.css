@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css?family=Istok+Web');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Istok Web', sans-serif;
+  line-height: 1.6;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.5);
+}
+a:hover {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* MEDIA QUERIES AND HELPER CLASSES */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1rem;
+  }
+  .navbar > .container {
+    display: block;
+  }
+  .navbar-toggler {
+    float: left;
+  }
+  .navbar-brand {
+    width: 4rem;
+    font-size: 1rem;
+    padding-top: 0.1rem;
+  }
+  .navbar-brand img {
+    width: 100%;
+  }
+  .nav-item {
+    width: 5.5rem;
+    margin: auto;
+  }
+  .nav-item:nth-child(5) {
+    margin-right: auto;
+  }
+  .navbar-collapse {
+    text-align: center;
+  }
+  .search-bar {
+    position: absolute;
+    right: 1rem;
+    top: 0.1rem;
+  }
+  .search-bar input {
+    width: 6rem;
+  }
+
+  /* SECTION SLIDER */
+  .slider {
+    margin-bottom: 1rem;
+  }
+  .frame {
+    background-color: transparent;
+    font-size: 1.4rem;
+  }
+  .frame span {
+    font-size: 4rem;
+  }
+  .frame:after,
+  .frame:before {
+    display: none;
+  }
+  /* SECTION PRODUCT */
+  .products {
+    margin-bottom: 2rem;
+  }
+  .hover-element {
+    opacity: 1;
+  }
+
+  footer .mini-nav {
+    display: none;
+  }
+  .footer-nav {
+    justify-content: center;
+  }
+  .footer-nav ul li a i {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .search-bar {
+    position: absolute;
+    right: 1rem;
+    top: -1.5rem;
+  }
+
+  /* SECTION SLIDER */
+  .frame {
+    width: 50%;
+    padding: 1.5rem 0;
+    font-size: 1.3rem;
+  }
+  .frame span {
+    font-size: 3.5rem;
+  }
+}
+
+/* COLORS */
+.purple {
+  background-color: #5c299c;
+}
+
+.green {
+  background-color: #1a840e;
+}
+.blue {
+  background-color: #3e24c5;
+}
+.black {
+  background-color: #000;
+}
+
+.github {
+  color: #333;
+}
+.facebook {
+  color: #35358e;
+}
+.twitter {
+  color: #599cf1;
+}
+.instagram {
+  color: #941fce;
+}
+.youtube {
+  color: red;
+}

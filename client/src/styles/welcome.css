@@ -1,0 +1,26 @@
+.welcome {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  background-image: url('../img/slider/slide-2.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message {
+  width: 60%;
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: #0e181fd9;
+}
+.message span {
+  display: block;
+  color: #82dc40;
+  text-transform: uppercase;
+  font-weight: 600;
+}
