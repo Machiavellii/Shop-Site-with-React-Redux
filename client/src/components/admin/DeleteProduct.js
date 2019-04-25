@@ -16,6 +16,7 @@ class DeleteProduct extends Component {
       <Consumer>
         {value => {
           const { products, dispatch } = value;
+
           return (
             <React.Fragment>
               <Link to="/aadmin=@1222">

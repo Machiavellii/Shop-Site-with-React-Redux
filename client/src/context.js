@@ -5,16 +5,6 @@ const Context = React.createContext();
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'ADD_PRODUCT':
-      return {
-        ...state,
-        products: [action.payload, ...state.products]
-      };
-    case 'ADD_BLOG':
-      return {
-        ...state,
-        blogs: [action.payload, ...state.blogs]
-      };
     case 'DELETE_PRODUCT':
       return {
         ...state,
@@ -27,6 +17,17 @@ const reducer = (state, action) => {
         ...state,
         blogs: state.blogs.filter(blog => blog.id !== action.payload)
       };
+    case 'ADD_PRODUCT':
+      return {
+        ...state,
+        products: [action.payload, ...state.products]
+      };
+    case 'ADD_BLOG':
+      return {
+        ...state,
+        blogs: [action.payload, ...state.blogs]
+      };
+
     default:
       return state;
   }
@@ -40,26 +41,34 @@ export class Provider extends Component {
     dispatch: action => this.setState(state => reducer(state, action))
   };
 
-  componentDidMount() {
-    axios
-      .get('/api/products')
-      .then(res => this.setState({ products: res.data }));
+  async componentDidMount() {
+    const res = await axios.get('/api/products');
 
-    axios.get('/api/blog').then(blog => this.setState({ blogs: blog.data }));
+    this.setState({ products: res.data });
 
-    axios.get('/api/admin').then(user =>
-      user.data.forEach(admin => {
-        this.setState({ user: admin });
-      })
-    );
+    const blog = await axios.get('/api/blog');
+
+    this.setState({ blogs: blog.data });
+
+    const user = await axios.get('/api/admin');
+    user.data.forEach(admin => {
+      this.setState({ user: admin });
+    });
   }
 
-  componentDidUpdate() {
-    axios
-      .get('/api/products')
-      .then(res => this.setState({ products: res.data }));
+  componentDidUpdate(prevProps, prevState) {
+    // axios
+    //   .get('/api/products')
+    //   .then(res => this.setState({ products: res.data }));
 
-    axios.get('/api/blog').then(blog => this.setState({ blogs: blog.data }));
+    // axios.get('/api/blog').then(blog => this.setState({ blogs: blog.data }));
+    if (this.state.blogs !== prevState.blogs) {
+      //axios.get('/api/blog').then(blog => this.setState({ blogs: blog.data }));
+
+      console.log('Update Blog');
+    } else if (this.state.products !== prevState.products) {
+      console.log('Update Product');
+    }
   }
 
   render() {
