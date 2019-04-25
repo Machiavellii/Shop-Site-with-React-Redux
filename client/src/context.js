@@ -40,19 +40,18 @@ export class Provider extends Component {
     dispatch: action => this.setState(state => reducer(state, action))
   };
 
-  async componentDidMount() {
-    const res = await axios.get('/api/products');
+  componentDidMount() {
+    axios
+      .get('/api/products')
+      .then(res => this.setState({ products: res.data }));
 
-    this.setState({ products: res.data });
+    axios.get('/api/blog').then(blog => this.setState({ blogs: blog.data }));
 
-    const blog = await axios.get('/api/blog');
-
-    this.setState({ blogs: blog.data });
-
-    const user = await axios.get('/api/admin');
-    user.data.forEach(admin => {
-      this.setState({ user: admin });
-    });
+    axios.get('/api/admin').then(user =>
+      user.data.forEach(admin => {
+        this.setState({ user: admin });
+      })
+    );
   }
 
   componentDidUpdate() {
