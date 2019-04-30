@@ -9,6 +9,7 @@ class DeleteProduct extends Component {
     await axios.delete(`/api/products/${id}`);
 
     dispatch({ type: 'DELETE_PRODUCT', payload: id });
+    window.location.reload();
   };
 
   render() {

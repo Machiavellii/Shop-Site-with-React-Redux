@@ -5,6 +5,11 @@ const Context = React.createContext();
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case 'GET_BLOGS':
+      return {
+        ...state,
+        blogs: action.payload
+      };
     case 'DELETE_PRODUCT':
       return {
         ...state,
@@ -34,12 +39,15 @@ const reducer = (state, action) => {
 };
 
 export class Provider extends Component {
-  state = {
-    products: [],
-    blogs: [],
-    user: [],
-    dispatch: action => this.setState(state => reducer(state, action))
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: [],
+      blogs: [],
+      user: [],
+      dispatch: action => this.setState(state => reducer(state, action))
+    };
+  }
 
   async componentDidMount() {
     const res = await axios.get('/api/products');
@@ -54,21 +62,6 @@ export class Provider extends Component {
     user.data.forEach(admin => {
       this.setState({ user: admin });
     });
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    // axios
-    //   .get('/api/products')
-    //   .then(res => this.setState({ products: res.data }));
-
-    // axios.get('/api/blog').then(blog => this.setState({ blogs: blog.data }));
-    if (this.state.blogs !== prevState.blogs) {
-      //axios.get('/api/blog').then(blog => this.setState({ blogs: blog.data }));
-
-      console.log('Update Blog');
-    } else if (this.state.products !== prevState.products) {
-      console.log('Update Product');
-    }
   }
 
   render() {

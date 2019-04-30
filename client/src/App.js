@@ -20,7 +20,7 @@ import DescribeProduct from './components/products/DescribeProduct';
 
 import Admin from './components/admin/Admin';
 import DeleteProduct from './components/admin/DeleteProduct';
-import DeleteBlog from './components/admin/DeleteBlog';
+import DeleteBlogs from './components/admin/DeleteBlogs';
 
 // import NotFound from './components/pages/NotFound';
 import './App.css';
@@ -54,7 +54,7 @@ class App extends Component {
                   path="/deleteproduct=1@$@3"
                   component={DeleteProduct}
                 />
-                <Route exact path="/deleteblog=$@34@" component={DeleteBlog} />
+                <Route exact path="/deleteblog=$@34@" component={DeleteBlogs} />
                 {/* <Route component={NotFound} /> */}
               </Switch>
             </div>

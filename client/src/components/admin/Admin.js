@@ -48,14 +48,17 @@ class Admin extends Component {
             <div className="col-sm-6">
               <Link
                 to="/deleteproduct=1@$@3"
-                className="btn btn-danger btn-block"
+                className="btn btn-danger btn-block mb-3"
               >
                 {' '}
                 Delete Product
               </Link>
             </div>
             <div className="col-sm-6">
-              <Link to="/deleteblog=$@34@" className="btn btn-danger btn-block">
+              <Link
+                to="/deleteblog=$@34@"
+                className="btn btn-danger btn-block mb-3"
+              >
                 Delete Blog
               </Link>
             </div>
