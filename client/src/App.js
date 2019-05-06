@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import PrivateRoute from './components/common/PrivateRoute';
+
 import Welcome from './components/landing/Welcome';
 import Navbar from './components/layout/Navbar';
 import Header from './components/layout/Header';
@@ -20,17 +22,19 @@ import DescribeProduct from './components/products/DescribeProduct';
 
 import Admin from './components/admin/Admin';
 import DeleteProduct from './components/admin/DeleteProduct';
-import DeleteBlogs from './components/admin/DeleteBlogs';
+import DeleteBlog from './components/admin/DeleteBlog';
 
 // import NotFound from './components/pages/NotFound';
-import './App.css';
 
-import { Provider } from './context';
+import store from './store';
+import { Provider } from 'react-redux';
+
+import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <Provider>
+      <Provider store={store}>
         <Router>
           <div className="App">
             <Header />
@@ -38,24 +42,24 @@ class App extends Component {
             <Route exact path="/" component={Welcome} />
             <Route exact path="/home" component={Landing} />
             <div className="container">
+              <Route exact path="/products" component={Products} />
+              <Route exact path="/describe" component={DescribeProduct} />
+              <Route exact path="/action" component={Action} />
+              <Route exact path="/popularly" component={Popularly} />
+              <Route exact path="/female" component={Female} />
+              <Route exact path="/male" component={Male} />
+              <Route exact path="/about" component={AboutUs} />
+              <Route exact path="/blog" component={Blog} />
+              <Route exact path="/login" component={Login} />
+
               <Switch>
-                <Route exact path="/products" component={Products} />
-                <Route exact path="/female" component={Female} />
-                <Route exact path="/male" component={Male} />
-                <Route exact path="/popularly" component={Popularly} />
-                <Route exact path="/action" component={Action} />
-                <Route exact path="/about" component={AboutUs} />
-                <Route exact path="/blog" component={Blog} />
-                <Route exact path="/describe" component={DescribeProduct} />
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/aadmin=@1222" component={Admin} />
-                <Route
+                <PrivateRoute exact path="/admin" component={Admin} />
+                <PrivateRoute exact path="/deleteblog" component={DeleteBlog} />
+                <PrivateRoute
                   exact
-                  path="/deleteproduct=1@$@3"
+                  path="/deleteproduct"
                   component={DeleteProduct}
                 />
-                <Route exact path="/deleteblog=$@34@" component={DeleteBlogs} />
-                {/* <Route component={NotFound} /> */}
               </Switch>
             </div>
             <Route exact path="/contact" component={Contact} />

@@ -3,6 +3,9 @@ const router = express.Router();
 
 const multer = require('multer');
 
+//Validation
+const validationProductInput = require('../../validation/product');
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, './uploads');
@@ -58,9 +61,12 @@ router.get('/:id', (req, res) => {
 // @desc    POST Create Product
 // @access  private
 router.post('/', upload.single('productImage'), (req, res) => {
-  if (req.file === null) {
-    return res.status(400).json({ msg: 'No file uploaded' });
+  const { errors, isValid } = validationProductInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
   }
+
   const newProduct = new Product({
     productImage: req.file.path,
     product: req.body.product,

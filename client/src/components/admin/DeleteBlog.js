@@ -1,24 +1,28 @@
 import React, { Component } from 'react';
-import { Consumer } from '../../context';
+import { Link } from 'react-router-dom';
 
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { getBlogs, deleteBlogs } from '../../actions/blogActions';
 
 export class DeleteBlog extends Component {
-  deleteBlog = async (id, dispatch) => {
-    await axios.delete(`/api/blog/${id}`);
+  componentDidMount() {
+    this.props.getBlogs();
+  }
 
-    dispatch({ type: 'DELETE_BLOG', payload: id });
-    window.location.reload();
+  deleteBlog = id => {
+    this.props.deleteBlogs(id);
   };
 
   render() {
     const { blogs } = this.props;
 
     return (
-      <Consumer>
-        {value => {
-          const { dispatch } = value;
-          return blogs.map(blog => (
+      <React.Fragment>
+        <Link to="/admin">
+          <i className="fas fa-arrow-alt-circle-left" /> Back
+        </Link>
+        <div className="row mt-3">
+          {blogs.map(blog => (
             <div className="col-sm-6 mb-3" key={blog._id}>
               <div className="card">
                 <div className="card-body">
@@ -30,7 +34,7 @@ export class DeleteBlog extends Component {
                       cursor: 'pointer',
                       zIndex: '1'
                     }}
-                    onClick={this.deleteBlog.bind(this, blog._id, dispatch)}
+                    onClick={this.deleteBlog.bind(this, blog._id)}
                   />
                   <h5 className="card-title">{blog.title}</h5>
 
@@ -38,11 +42,18 @@ export class DeleteBlog extends Component {
                 </div>
               </div>
             </div>
-          ));
-        }}
-      </Consumer>
+          ))}
+        </div>
+      </React.Fragment>
     );
   }
 }
 
-export default DeleteBlog;
+const mapStateToProps = state => ({
+  blogs: state.blog.blogs
+});
+
+export default connect(
+  mapStateToProps,
+  { getBlogs, deleteBlogs }
+)(DeleteBlog);

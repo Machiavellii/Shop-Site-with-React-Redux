@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import ProductPage from './ProductPage';
 import BlogPage from './BlogPage';
@@ -43,11 +44,12 @@ class Admin extends Component {
           </div>
           {showBlog ? <BlogPage /> : null}
         </div>
+
         <div className="card">
           <div className="row">
             <div className="col-sm-6">
               <Link
-                to="/deleteproduct=1@$@3"
+                to="/deleteproduct"
                 className="btn btn-danger btn-block mb-3"
               >
                 {' '}
@@ -55,10 +57,7 @@ class Admin extends Component {
               </Link>
             </div>
             <div className="col-sm-6">
-              <Link
-                to="/deleteblog=$@34@"
-                className="btn btn-danger btn-block mb-3"
-              >
+              <Link to="/deleteblog" className="btn btn-danger btn-block mb-3">
                 Delete Blog
               </Link>
             </div>
@@ -69,4 +68,8 @@ class Admin extends Component {
   }
 }
 
-export default withRouter(Admin);
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(Admin);

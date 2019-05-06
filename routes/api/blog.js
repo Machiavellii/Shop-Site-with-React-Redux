@@ -51,7 +51,7 @@ router.post('/', (req, res) => {
 // @desc    Delete Blog
 // @access  Private
 router.delete('/:id', (req, res) => {
-  Blog.findByIdAndDelete(req.params.id)
+  Blog.findById(req.params.id)
     .then(blog => {
       blog.remove().then(() => res.json({ success: true }));
     })
